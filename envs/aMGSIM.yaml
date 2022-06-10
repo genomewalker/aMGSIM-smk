@@ -1,0 +1,14 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - art
+  - prodigal
+  - adapterremoval
+  - gargammel-slim
+  - python>=3.7,<=3.9
+  - pip
+  - pip:
+      - Cython>=0.29.21
+      - git+https://github.com/genomewalker/aMGSIM.git
