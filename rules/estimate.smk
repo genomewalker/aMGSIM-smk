@@ -16,7 +16,7 @@ rule estimate:
     conda:
         "../envs/aMGSIM.yaml"
     message:
-        """--- Estimating simuated data composition"""
+        """--- Estimating simulated data composition"""
     shell:
         """
         cd {params.results_dir} || {{ echo "Cannot change dir"; exit 1; }}

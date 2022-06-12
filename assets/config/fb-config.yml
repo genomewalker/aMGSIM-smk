@@ -6,19 +6,26 @@ acc2taxid: ACC2TAXID_FILE
 sample-name: SAMPLE_NAME
 # Abundace table
 filterBAM-stats: FB_STATS
-filterBAM-filter-conditions: { "breadth_exp_ratio": 0.75, "coverage_mean": 0 }
-# Table with specific genome's ancient properties
-use-restimated-proportions: True
+# How to filter the filterBAM-stats file
+filterBAM-filter-conditions: FILTERBAM_FILTER_CONDITIONS
+# Should we reestimate the abundances after the genome selection?
+use-restimated-proportions: USE_RESTIMATED_PROPORTIONS
 # Table with specific genome's ancient properties
 mdmg-results: METADMG_RESULTS
-mdmg-filter-conditions: { "Bayesian_D_max": 0.1, "Bayesian_z": 2.5 }
-taxonomic-rank: "genus"
-# Number of modern genomes
+# Filter options for the filetrBAM table
+mdmg-filter-conditions: METADMG_FILTER_CONDITIONS
+# Taxonomic rank where to aggregate and pick the genomes
+# We will select the target taxonomic rank, and choose by random or by most abundant or
+# by least abundance. Then we will try to get one genome out of each taxonomic rank, if
+# the selected number of genomes is not fulfilled we will look for another rank.
+taxonomic-rank: TAXONOMIC_RANK
+# Number of non-damaged genomes
 max-genomes-nondamaged: MAX_GENOMES_NONDAMAGED
-# random, most_abundant, least_abundant
-max-genomes-nondamaged-selection: "most_abundant"
+# How to select the non-damaged genomes: random, most_abundant, least_abundant
+max-genomes-nondamaged-selection: MAX_GENOMES_NONDAMAGED_SELECTION
 # Number of ancient genomes
-max-genomes-damaged-selection: "most_abundant"
+max-genomes-damaged-selection: MAX_GENOMES_DAMAGED_SELECTION
+# How to select the damaged genomes: random, most_abundant, least_abundant
 max-genomes-damaged: MAX_GENOMES_DAMAGED
 # Number of cpus. [Default: 1]
 cpus: CPUS
