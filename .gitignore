@@ -24,5 +24,8 @@ scripts/.snakemake*
 !.travis.yml
 !.test
 !assets/
+!assets/*
+!assets/data
+!assets/data/*
 !assets/config/
 !assets/config/*

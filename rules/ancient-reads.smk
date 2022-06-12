@@ -12,6 +12,7 @@ if config["seq_library"][0] == "single":
         params:
             results_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}',
             output_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}',
+            ar_tmp_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ar-tmp',
             wdir=f'{config["wdir"]}',
         threads: config["cpus"]
         log:
@@ -26,8 +27,8 @@ if config["seq_library"][0] == "single":
             """
             cd {params.results_dir} || {{ echo "Cannot change dir"; exit 1; }}
             aMGSIM ancient-reads {input.genome_table} {input.ar_config_file}
-            mv {params.output_dir}/* {params.results_dir}/reads/
-            rm -rf {params.output_dir}
+            mv {params.output_dir}/*gz {params.results_dir}/reads/
+            rm -rf {params.output_dir} {params.ar_tmp_dir} {params.results_dir}/reads/genomes
             cd {params.wdir} || {{ echo "Cannot change dir"; exit 1; }}
             """
 
@@ -47,6 +48,7 @@ if config["seq_library"] == "double":
         params:
             results_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}',
             output_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}',
+            ar_tmp_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ar-tmp',
             wdir=f'{config["wdir"]}',
         threads: config["cpus"]
         log:
@@ -61,7 +63,7 @@ if config["seq_library"] == "double":
             """
             cd {params.results_dir} || {{ echo "Cannot change dir"; exit 1; }}
             aMGSIM ancient-reads {input.genome_table} {input.ar_config_file}
-            mv {params.output_dir}/* {params.results_dir}/reads/
-            rm -rf {params.output_dir}
+            mv {params.output_dir}/*gz {params.results_dir}/reads/
+            rm -rf {params.output_dir} {params.ar_tmp_dir} {params.results_dir}/reads/genomes
             cd {params.wdir} || {{ echo "Cannot change dir"; exit 1; }}
             """

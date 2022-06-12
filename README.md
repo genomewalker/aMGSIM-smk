@@ -2,7 +2,7 @@
 
 This workflow is designed to help in the generation of multiple synthetic datasets using [aMGSIM](https://github.com/genomewalker/aMGSIM). The workflow needs the results generated after processing a BAM file through [filterBAM](https://github.com/genomewalker/bam-filter) and [metaDMG](https://metadmg-dev.github.io/metaDMG-core/). An example of the config file is [here](config/config.yaml).
 
-The sample TSV file must contain the following fields:
+The [sample TSV](assets/metaDMGsamplelist-test.tsv) file must contain the following fields:
 - **label**: The name of the sample
 - **short_label**: A short name for the sample (if not provided will autogenerate a short name using the MD5 of the label)
 - **libprep**: The type of library preparation to use (**single**-stranded or **double**-stranded)
@@ -13,3 +13,19 @@ The sample TSV file must contain the following fields:
 
 Once the workflow is done will produce the following folders:
 
+```
+Cave-22/single/single/1000000
+├── Cave-22.communities.tsv
+├── Cave-22.filepaths.tsv
+├── Cave-22.genome-compositions.tsv
+├── Cave-22.json
+├── Cave-22.tsv
+├── Cave-22_read-files.json
+├── ag-config.yaml
+├── ar-config.yaml
+├── fb-config.yaml
+└── reads
+    ├── Cave-22_art.fq.gz
+    ├── Cave-22_deamSim.fa.gz
+    └── Cave-22_fragSim.fa.gz
+```

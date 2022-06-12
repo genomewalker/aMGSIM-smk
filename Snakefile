@@ -47,7 +47,6 @@ if not all(
     item in sample_table_read.columns
     for item in [
         "label",
-        "file",
         "read_length_freqs_file",
         "mapping_stats_filtered_file",
         "metadmg_results",

@@ -1,0 +1,2 @@
+label	short_label	libprep	read_length_freqs_file	mapping_stats_filtered_file	metadmg_results	metadmg_misincorporations
+Cave-22	Cave-22	double	8bf92435d8.dedup_read-length-freqs.json	8bf92435d8.dedup_stats-filtered.tsv.gz	8bf92435d8.tp-mdmg.local.weight-1.csv.gz	8bf92435d8.tp-mdmg.local.misincorporation.weight-1.txt.gz
