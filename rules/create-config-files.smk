@@ -28,19 +28,22 @@ rule create_config_files:
         max_genomes_nondamaged=config["max_genomes_nondamaged"],
         max_genomes_damaged=config["max_genomes_damaged"],
         num_reads="{num_reads}",
-        seq_library=config["seq_library"],
-        libprep=config["libprep"],
-        genome_table=f"{smp}.filepaths.tsv",
-        abund_table=f"{smp}.communities.tsv",
-        genome_composition=f"{smp}.genome-composition.tsv",
-        ag_tmp_dir=f'{config["rdir"]}/logs/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ag-tmp',
-        ar_tmp_dir=f'{config["rdir"]}/logs/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ar-tmp',
+        seq_library="{seqlib}",
+        seq_system=config["seq_system"],
+        seq_read_length=config["seq_read_length"],
+        libprep="{libprep}",
+        genome_table=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.filepaths.tsv',
+        abund_table=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.tsv',
+        genome_composition=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.genome-compositions.tsv',
+        ag_tmp_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ag-tmp',
+        ar_tmp_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ar-tmp',
+        json=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.json',
         cpus=config["cpus"],
-        output_dir=f'{config["rdir"]}/logs/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}'
+        output_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads',
     log:
-        f'{config["rdir"]}/logs/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}.log',
+        f'{config["rdir"]}/logs/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/create-config.log',
     benchmark:
-        f'{config["rdir"]}/benchmarks/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}.bmk'
+        f'{config["rdir"]}/benchmarks/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/create-config.bmk'
     message:
         """--- Creating config files"""
     shell:
@@ -62,9 +65,14 @@ rule create_config_files:
             -e 's|CPUS|{params.cpus}|' \
             -e 's|NUM_READS|{params.num_reads}|' \
             -e 's|SEQ_LIBRARY|{params.seq_library}|' \
+            -e 's|SEQ_SYSTEM|{params.seq_system}|' \
+            -e 's|SEQ_READ_LENGTH|{params.seq_read_length}|' \
             -e 's|TMP_DIR|{params.ag_tmp_dir}|' {input.ag_config_file} > {output.ag_config_file}
         sed -e 's|TMP_DIR|{params.ar_tmp_dir}|' \
+            -e 's|ANCIENT_GENOMES_FILE|{params.json}|' \
+            -e 's|MAPDMG_MISINCORPORATION|{input.metadmg_misincorporations}|' \
             -e 's|CPUS|{params.cpus}|' \
             -e 's|LIBRARY_PREP|{params.libprep}|' \
             -e 's|OUTPUT_DIR|{params.output_dir}|' {input.ar_config_file} > {output.ar_config_file}
+        sleep 5
         """

@@ -15,21 +15,28 @@ sample_file_read: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/met
 #
 ###############################################################################
 
+# Read https://github.com/genomewalker/aMGSIM/ for the configuration details
+
 # aMGSIM config files
 fb_config_file: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/config/fb-config.yml"
 ag_config_file: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/config/ag-config.yml"
 ar_config_file: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/config/ar-config.yml"
 cpus: 16
+
 # aMGSIM config files
 # fb_config
 genome_paths: /vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/genome-paths-list.tsv
 names_dmp: /vol/cloud/geogenetics/DBs/gtdb/r202/data/vanilla-organelles-virus/pkg/taxonomy/names.dmp
 nodes_dmp: /vol/cloud/geogenetics/DBs/gtdb/r202/data/vanilla-organelles-virus/pkg/taxonomy/nodes.dmp
 acc2taxid: /vol/cloud/geogenetics/DBs/gtdb/r202/data/vanilla-organelles-virus/pkg/taxonomy/acc2taxid.map.gz
-max_genomes_nondamaged: 10
-max_genomes_damaged: 10
+max_genomes_nondamaged: 50
+max_genomes_damaged: 100
 
 # ag_config
-num_reads: [1e6, 5e6, 10e6]
-seq_library: ["double"]
+num_reads: [1e6, 5e6, 10e6, 50e6, 100e6]
+# single or paired
+seq_library: ["single"]
+seq_system: "HS25"
+seq_read_length: 125
+# single or double
 libprep: ["double", "single"]
