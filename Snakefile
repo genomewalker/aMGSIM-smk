@@ -47,7 +47,6 @@ if not all(
     item in sample_table_read.columns
     for item in [
         "label",
-        "file",
         "read_length_freqs_file",
         "mapping_stats_filtered_file",
         "metadmg_results",
@@ -74,25 +73,141 @@ sample_table_read.set_index("short_label", inplace=True)
 sample_label_dict_read = sample_table_read.to_dict()["label"]
 sample_label_read = sample_table_read.index.values
 
+done_art_sr = []
+done_art_p1 = []
+done_art_p2 = []
+done_fragsim = []
+done_deamsim = []
+if config["seq_library"][0] == "single":
+    done_art_sr = (
+        expand(
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_art.fq.gz',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            libprep=config["libprep"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+    )
+    done_fragsim = (
+        expand(
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_fragSim.fa.gz',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            libprep=config["libprep"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+    )
+    done_deamsim = (
+        expand(
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_deamSim.fa.gz',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            libprep=config["libprep"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+    )
+
+if config["seq_library"][0] == "double":
+    done_art_p1 = (
+        (
+            expand(
+                f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_art.1.fq.gz',
+                smp=sample_label_read,
+                seqlib=config["seq_library"],
+                libprep=config["libprep"],
+                num_reads=[str(int(float(i))) for i in config["num_reads"]],
+            ),
+        ),
+    )
+    done_art_p2 = (
+        (
+            expand(
+                f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_art.2.fq.gz',
+                smp=sample_label_read,
+                seqlib=config["seq_library"],
+                libprep=config["libprep"],
+                num_reads=[str(int(float(i))) for i in config["num_reads"]],
+            ),
+        ),
+    )
+    done_fragsim = (
+        expand(
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_fragSim.fa.gz',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            libprep=config["libprep"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+    )
+    done_deamsim = (
+        expand(
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_deamSim.fa.gz',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            libprep=config["libprep"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+    )
+
 
 rule all:
     input:
+        done_art_sr,
+        done_art_p1,
+        done_art_p2,
+        done_fragsim,
+        done_deamsim,
         done_fb_config_file=expand(
-            config["rdir"] + "/{smp}/{libprep}/{seqlib}/{num_reads}/fb-config.yaml",
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/fb-config.yaml',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             libprep=config["libprep"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
         ),
         done_ag_config_file=expand(
-            config["rdir"] + "/{smp}/{libprep}/{seqlib}/{num_reads}/ag-config.yaml",
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ag-config.yaml',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             libprep=config["libprep"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
         ),
         done_ar_config_file=expand(
-            config["rdir"] + "/{smp}/{libprep}/{seqlib}/{num_reads}/ar-config.yaml",
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ar-config.yaml',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            libprep=config["libprep"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+        done_genome_table=expand(
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.filepaths.tsv',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            libprep=config["libprep"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+        done_abund_table=expand(
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.tsv',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            libprep=config["libprep"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+        done_genome_composition=expand(
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.genome-compositions.tsv',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            libprep=config["libprep"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+        done_json=expand(
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.json',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            libprep=config["libprep"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+        done_tsv=expand(
+            f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.tsv',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             libprep=config["libprep"],
@@ -106,3 +221,6 @@ rule all:
 
 
 include: "rules/create-config-files.smk"
+include: "rules/estimate.smk"
+include: "rules/ancient-genomes.smk"
+include: "rules/ancient-reads.smk"

@@ -1,0 +1,44 @@
+global:
+  # Path to the fragSim binary
+  fragSim: fragSim
+  # Path to the deamSim binary
+  deamSim: deamSim
+  # Path to the adptSim binary
+  adptSim: adptSim
+  # Path to the art_illumina binary
+  art: art_illumina
+  # Temporary folder
+  tmp-dir: TMP_DIR
+  # Number of cpus
+  cpus: 16
+  # Output dir
+  output-dir: OUTPUT_DIR
+  # libprep single or double
+  libprep: LIBRARY_PREP
+  # Should the adapters added by adapSim be removed after ART?
+  remove-adapters: True
+fragSim:
+  ancient-genomes: ANCIENT_GENOMES_FILE
+  modern:
+    --case: True # Do not set the sequence to upper-case (default: uppercase the seqs.)
+    --comp: False # [file] Base composition for the fragments (default none)
+    --dist: False # [file] Distance from ends to consider  (default: 1) if this is not specified, the base composition will only reflect the chromosome file used
+    --norev: False # Do not reverse complement (default: rev. comp half of seqs.)
+  ancient:
+    --case: False # Do not set the sequence to upper-case (default: uppercase the seqs.)
+    --comp: False # [file] Base composition for the fragments (default none)
+    --dist: False # [file] Distance from ends to consider  (default: 1) if this is not specified, the base composition will only reflect the chromosome file used
+    --norev: False # Do not reverse complement (default: rev. comp half of seqs.)
+deamSim:
+  -mapdamage: MAPDMG_MISINCORPORATION #  Read the miscorporation file [mis.txt] produced by metaDMG
+  # v: nick frequency
+  # l: length of overhanging ends (geometric parameter)
+  # d: prob. of deamination of Cs in double-stranded parts
+  # s: prob. of deamination of Cs in single-stranded parts
+  -damage: False #[0.03, 0.1, 0.01, 0.1] #[0.03, 0.4, 0.01, 0.7] # For the Briggs et al. 2007 model The parameters must be comma-separated e.g.: -damage 0.03,0.4,0.01,0.7
+adptSim:
+  -f: AGATCGGAAGAGCACACGTCTGAACTCCAGTCACCGATTCGATCTCGTATGC
+  -s: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATTT
+art:
+  --qprof1: False
+  --qprof2: False

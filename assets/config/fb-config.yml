@@ -1,0 +1,31 @@
+# Table with genomes to use
+genome-paths: GENOMES_PATH_FILE
+names-dmp: NAMES_DMP_FILE
+nodes-dmp: NODES_DMP_FILE
+acc2taxid: ACC2TAXID_FILE
+sample-name: SAMPLE_NAME
+# Abundace table
+filterBAM-stats: FB_STATS
+# How to filter the filterBAM-stats file
+filterBAM-filter-conditions: FILTERBAM_FILTER_CONDITIONS
+# Should we reestimate the abundances after the genome selection?
+use-restimated-proportions: USE_RESTIMATED_PROPORTIONS
+# Table with specific genome's ancient properties
+mdmg-results: METADMG_RESULTS
+# Filter options for the filetrBAM table
+mdmg-filter-conditions: METADMG_FILTER_CONDITIONS
+# Taxonomic rank where to aggregate and pick the genomes
+# We will select the target taxonomic rank, and choose by random or by most abundant or
+# by least abundance. Then we will try to get one genome out of each taxonomic rank, if
+# the selected number of genomes is not fulfilled we will look for another rank.
+taxonomic-rank: TAXONOMIC_RANK
+# Number of non-damaged genomes
+max-genomes-nondamaged: MAX_GENOMES_NONDAMAGED
+# How to select the non-damaged genomes: random, most_abundant, least_abundant
+max-genomes-nondamaged-selection: MAX_GENOMES_NONDAMAGED_SELECTION
+# Number of ancient genomes
+max-genomes-damaged-selection: MAX_GENOMES_DAMAGED_SELECTION
+# How to select the damaged genomes: random, most_abundant, least_abundant
+max-genomes-damaged: MAX_GENOMES_DAMAGED
+# Number of cpus. [Default: 1]
+cpus: CPUS

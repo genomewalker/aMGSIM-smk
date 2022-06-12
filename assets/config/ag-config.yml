@@ -1,0 +1,33 @@
+# Table with genomes to use
+genome-table: GENOME_TABLE
+# Abundace table
+abund-table: ABUND_TABLE
+# Table with specific genome's ancient properties
+genome-comp: GENOME_COMPOSITION
+# JSON file with the empirical read length frequencies calculated by filterBAM
+read-length-freqs: READ_LENGTH_FREQS
+# Number of cpus. [Default: 1]
+cpus: CPUS
+# Minimum fragment length [Default: 30]
+min-length: 30
+# Fragment length distribution [Default: lognormal]
+length-dist: lognormal
+# Mode of the acient fragments length distribution [Default: 40]
+mode-len-ancient: 40
+# Mode of the acient fragments length distribution [Default: 100]
+mode-len-modern: 100
+# Proportion of ancient genomes per site. [Default: 0.1]
+prop-ancient-comm: 0.2
+# Maximum and minimum coverage of the ancient genomes in each samples. [Default: 0.1]
+coverage: [0.1, 5]
+# Sequencing technology [Default: HS25]
+seqSys: SEQ_SYSTEM
+# Number of reads to generate per sample [Default: 1e6]
+num-reads: NUM_READS
+# Desired final read length. Will be used by adptSim and ART [Default: 150]
+read-len: SEQ_READ_LENGTH
+# Use single end library properties [Default: False]
+library: SEQ_LIBRARY
+# Temporary folder
+tmp-dir: TMP_DIR
+enforce-cov: False
