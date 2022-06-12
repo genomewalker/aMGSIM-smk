@@ -23,3 +23,6 @@ scripts/.snakemake*
 !.editorconfig
 !.travis.yml
 !.test
+!assets/
+!assets/config/
+!assets/config/*

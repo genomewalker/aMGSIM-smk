@@ -1,0 +1,24 @@
+# Table with genomes to use
+genome-paths: GENOMES_PATH_FILE
+names-dmp: NAMES_DMP_FILE
+nodes-dmp: NODES_DMP_FILE
+acc2taxid: ACC2TAXID_FILE
+sample-name: SAMPLE_NAME
+# Abundace table
+filterBAM-stats: FB_STATS
+filterBAM-filter-conditions: { "breadth_exp_ratio": 0.75, "coverage_mean": 0 }
+# Table with specific genome's ancient properties
+use-restimated-proportions: True
+# Table with specific genome's ancient properties
+mdmg-results: METADMG_RESULTS
+mdmg-filter-conditions: { "Bayesian_D_max": 0.1, "Bayesian_z": 2.5 }
+taxonomic-rank: "genus"
+# Number of modern genomes
+max-genomes-nondamaged: MAX_GENOMES_NONDAMAGED
+# random, most_abundant, least_abundant
+max-genomes-nondamaged-selection: "most_abundant"
+# Number of ancient genomes
+max-genomes-damaged-selection: "most_abundant"
+max-genomes-damaged: MAX_GENOMES_DAMAGED
+# Number of cpus. [Default: 1]
+cpus: CPUS
