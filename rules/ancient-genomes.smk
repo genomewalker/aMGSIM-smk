@@ -5,8 +5,8 @@ rule ancient_genomes:
         abund_table=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.tsv',
         genome_composition=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.genome-compositions.tsv',
     output:
-        json=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.json',
-        tsv=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.tsv',
+        json=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.json',
+        tsv=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities_read-abundances.tsv',
     params:
         results_dir=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}',
         wdir=f'{config["wdir"]}',

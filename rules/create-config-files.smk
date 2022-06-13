@@ -43,7 +43,7 @@ rule create_config_files:
         genome_composition=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.genome-compositions.tsv',
         ag_tmp_dir=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/ag-tmp',
         ar_tmp_dir=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/ar-tmp',
-        json=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.json',
+        json=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.json',
         cpus=config["cpus"],
         output_dir=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads',
     log:

@@ -189,13 +189,13 @@ rule all:
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
         ),
         done_json=expand(
-            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.json',
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.json',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
         ),
         done_tsv=expand(
-            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.tsv',
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities_read-abundances.tsv',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],

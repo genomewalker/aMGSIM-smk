@@ -4,7 +4,7 @@ if config["seq_library"][0] == "single":
         input:
             ar_config_file=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/ar-config.yaml',
             genome_table=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.filepaths.tsv',
-            json=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.json',
+            json=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.json',
         output:
             fragsim=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_fragSim.fa.gz',
             deamsim=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_deamSim.fa.gz',
