@@ -14,7 +14,7 @@ The [sample TSV](assets/metaDMGsamplelist-test.tsv) file must contain the follow
 Example data can be found [here](assets/data). Once the workflow is done will produce the following folders. In this example, we show the output for the sample `Cave-22`, where the workflow tried to produce a maximum of `1000000` single-end reads:
 
 ```
-Cave-22/double/single/1000000
+Cave-22/single/1000000
 ├── Cave-22.communities.json
 ├── Cave-22.communities.tsv
 ├── Cave-22.communities_read-abundances.tsv
