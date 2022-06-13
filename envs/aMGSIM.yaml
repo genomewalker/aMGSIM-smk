@@ -10,4 +10,4 @@ dependencies:
   - pip
   - pip:
       - Cython>=0.29.21
-      - git+https://github.com/genomewalker/aMGSIM.git
+      - aMGSIM>=0.0.15
