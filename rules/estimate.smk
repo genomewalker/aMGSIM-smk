@@ -1,18 +1,18 @@
 rule estimate:
     input:
-        fb_config_file=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/fb-config.yaml',
+        fb_config_file=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/fb-config.yaml',
     output:
-        genome_table=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.filepaths.tsv',
-        abund_table=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.tsv',
-        genome_composition=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.genome-compositions.tsv',
+        genome_table=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.filepaths.tsv',
+        abund_table=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.tsv',
+        genome_composition=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.genome-compositions.tsv',
     params:
-        results_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}',
+        results_dir=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}',
         wdir=f'{config["wdir"]}',
     threads: config["cpus"]
     log:
-        f'{config["rdir"]}/logs/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/estimate.log',
+        f'{config["rdir"]}/logs/config/{{smp}}/{{seqlib}}/{{num_reads}}/estimate.log',
     benchmark:
-        f'{config["rdir"]}/benchmarks/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/estimate.bmk'
+        f'{config["rdir"]}/benchmarks/config/{{smp}}/{{seqlib}}/{{num_reads}}/estimate.bmk'
     conda:
         "../envs/aMGSIM.yaml"
     message:

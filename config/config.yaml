@@ -7,7 +7,7 @@ sdir: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/data"
 rdir: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/results"
 
 # A list of all the samples to be simulated
-sample_file_read: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/metaDMGsamplelist-test.tsv"
+sample_file_read: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/samples.tsv"
 
 ###############################################################################
 #
@@ -60,5 +60,3 @@ seq_library: ["single"]
 seq_system: "HS25"
 # Read length
 seq_read_length: 125
-# single or double
-libprep: ["double", "single"]

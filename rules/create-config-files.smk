@@ -16,9 +16,9 @@ rule create_config_files:
         ag_config_file=config["ag_config_file"],
         ar_config_file=config["ar_config_file"],
     output:
-        fb_config_file=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/fb-config.yaml',
-        ag_config_file=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ag-config.yaml',
-        ar_config_file=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ar-config.yaml',
+        fb_config_file=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/fb-config.yaml',
+        ag_config_file=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/ag-config.yaml',
+        ar_config_file=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/ar-config.yaml',
     params:
         label="{smp}",
         genome_paths=config["genome_paths"],
@@ -37,19 +37,19 @@ rule create_config_files:
         seq_library="{seqlib}",
         seq_system=config["seq_system"],
         seq_read_length=config["seq_read_length"],
-        libprep="{libprep}",
-        genome_table=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.filepaths.tsv',
-        abund_table=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.tsv',
-        genome_composition=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.genome-compositions.tsv',
-        ag_tmp_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ag-tmp',
-        ar_tmp_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/ar-tmp',
-        json=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/{{smp}}.json',
+        libprep=lambda wildcards: sample_table_read.libprep[wildcards.smp],        
+        genome_table=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.filepaths.tsv',
+        abund_table=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.tsv',
+        genome_composition=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.genome-compositions.tsv',
+        ag_tmp_dir=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/ag-tmp',
+        ar_tmp_dir=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/ar-tmp',
+        json=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.json',
         cpus=config["cpus"],
-        output_dir=f'{config["rdir"]}/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/reads',
+        output_dir=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads',
     log:
-        f'{config["rdir"]}/logs/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/create-config.log',
+        f'{config["rdir"]}/logs/config/{{smp}}/{{seqlib}}/{{num_reads}}/create-config.log',
     benchmark:
-        f'{config["rdir"]}/benchmarks/config/{{smp}}/{{libprep}}/{{seqlib}}/{{num_reads}}/create-config.bmk'
+        f'{config["rdir"]}/benchmarks/config/{{smp}}/{{seqlib}}/{{num_reads}}/create-config.bmk'
     message:
         """--- Creating config files"""
     shell:
