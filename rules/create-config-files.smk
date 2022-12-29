@@ -33,6 +33,7 @@ rule create_config_files:
         max_genomes_damaged=config["max_genomes_damaged"],
         max_genomes_damaged_selection=config["max_genomes_damaged_selection"],
         max_genomes_nondamaged_selection=config["max_genomes_nondamaged_selection"],
+        rank_filter_conditions=config["rank_filter_conditions"],
         num_reads="{num_reads}",
         seq_library="{seqlib}",
         seq_system=config["seq_system"],
@@ -70,6 +71,7 @@ rule create_config_files:
             -e 's|MAX_GENOMES_DAMAGED_SELECTION|{params.max_genomes_damaged_selection}|' \
             -e 's|MAX_GENOMES_NONDAMAGED|{params.max_genomes_nondamaged}|' \
             -e 's|MAX_GENOMES_DAMAGED|{params.max_genomes_damaged}|' \
+            -e 's|RANK_FILTER_CONDITIONS|{params.rank_filter_conditions}|' \
             -e 's|CPUS|{params.cpus}|' {input.fb_config_file} > {output.fb_config_file}
         sed -e 's|GENOME_TABLE|{params.genome_table}|' \
             -e 's|ABUND_TABLE|{params.abund_table}|' \

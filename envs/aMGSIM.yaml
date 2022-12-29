@@ -10,4 +10,4 @@ dependencies:
   - pip
   - pip:
       - Cython>=0.29.21
-      - aMGSIM>=1.0.3
+      - aMGSIM>=1.0.4

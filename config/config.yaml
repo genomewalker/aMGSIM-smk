@@ -35,6 +35,8 @@ use_restimated_proportions: True
 filterbam_filter_conditions: '{ "breadth_exp_ratio": 0.75, "coverage_mean": 0, "n_reads": 100}'
 # How to filter the metaDMG data
 metadmg_filter_conditions: '{ "damage": 0.1, "significance": 2 }'
+# Which ranks we would like to keep
+rank_filter_conditions: '{ "superkingdom": ["d__Bacteria", "d__Archaea", "d__Viruses"] }'
 # Taxonomic rank where to aggregate and pick the genomes
 # We will select the target taxonomic rank, and choose by random or by most abundant or
 # by least abundance. Then we will try to get one genome out of each taxonomic rank, if

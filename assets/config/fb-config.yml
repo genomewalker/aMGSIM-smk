@@ -29,3 +29,5 @@ max-genomes-damaged-selection: MAX_GENOMES_DAMAGED_SELECTION
 max-genomes-damaged: MAX_GENOMES_DAMAGED
 # Number of cpus. [Default: 1]
 cpus: CPUS
+# Which ranks we would like to keep
+rank-filter-conditions: RANK_FILTER_CONDITIONS
