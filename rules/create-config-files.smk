@@ -86,7 +86,7 @@ rule create_config_files:
             -e 's|MAPDMG_MISINCORPORATION|{input.metadmg_misincorporations}|' \
             -e 's|CPUS|{params.cpus}|' \
             -e 's|LIBRARY_PREP|{params.libprep}|' \
-            -e 's|REMOVE_ADAPTERS|{params.remove_adapters}' \
+            -e 's|REMOVE_ADAPTERS|{params.remove_adapters}|' \
             -e 's|OUTPUT_DIR|{params.output_dir}|' {input.ar_config_file} > {output.ar_config_file}
         sleep 5
         """
