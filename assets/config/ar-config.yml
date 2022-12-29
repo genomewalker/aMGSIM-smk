@@ -16,7 +16,7 @@ global:
   # libprep single or double
   libprep: LIBRARY_PREP
   # Should the adapters added by adapSim be removed after ART?
-  remove-adapters: True
+  remove-adapters: REMOVE_ADAPTERS
 fragSim:
   ancient-genomes: ANCIENT_GENOMES_FILE
   modern:

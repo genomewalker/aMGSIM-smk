@@ -32,9 +32,9 @@ acc2taxid: /vol/cloud/geogenetics/DBs/gtdb/r202/data/vanilla-organelles-virus/pk
 # Should we reestimate the abundances after the genome selection?
 use_restimated_proportions: True
 # How to filter the filterBAM-stats data
-filterbam_filter_conditions: '{ "breadth_exp_ratio": 0.75, "coverage_mean": 0 }'
+filterbam_filter_conditions: '{ "breadth_exp_ratio": 0.75, "coverage_mean": 0, "n_reads": 100}'
 # How to filter the metaDMG data
-metadmg_filter_conditions: '{ "Bayesian_D_max": 0.1, "Bayesian_z": 2.5 }'
+metadmg_filter_conditions: '{ "damage": 0.1, "significance": 2 }'
 # Taxonomic rank where to aggregate and pick the genomes
 # We will select the target taxonomic rank, and choose by random or by most abundant or
 # by least abundance. Then we will try to get one genome out of each taxonomic rank, if
@@ -60,3 +60,4 @@ seq_library: ["single"]
 seq_system: "HS25"
 # Read length
 seq_read_length: 125
+remove_adapters: True

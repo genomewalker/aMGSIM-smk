@@ -29,3 +29,4 @@ scripts/.snakemake*
 !assets/data/*
 !assets/config/
 !assets/config/*
+.DS_Store

@@ -37,6 +37,7 @@ rule create_config_files:
         seq_library="{seqlib}",
         seq_system=config["seq_system"],
         seq_read_length=config["seq_read_length"],
+        remove_adapters=config["remove_adapters"],
         libprep=lambda wildcards: sample_table_read.libprep[wildcards.smp],        
         genome_table=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.filepaths.tsv',
         abund_table=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities.tsv',
@@ -85,6 +86,7 @@ rule create_config_files:
             -e 's|MAPDMG_MISINCORPORATION|{input.metadmg_misincorporations}|' \
             -e 's|CPUS|{params.cpus}|' \
             -e 's|LIBRARY_PREP|{params.libprep}|' \
+            -e 's|REMOVE_ADAPTERS|{params.remove_adapers}' \
             -e 's|OUTPUT_DIR|{params.output_dir}|' {input.ar_config_file} > {output.ar_config_file}
         sleep 5
         """
