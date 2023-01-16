@@ -64,7 +64,6 @@ if config["seq_library"] == "double":
             cd {params.results_dir} || {{ echo "Cannot change dir"; exit 1; }}
             aMGSIM ancient-reads {input.genome_table} {input.ar_config_file}
             mv {params.output_dir}/*gz {params.results_dir}/reads/
-            mv {params.output_dir}/*json {params.results_dir}/reads/
             rm -rf {params.output_dir} {params.ar_tmp_dir} {params.results_dir}/reads/genomes
             cd {params.wdir} || {{ echo "Cannot change dir"; exit 1; }}
             """
