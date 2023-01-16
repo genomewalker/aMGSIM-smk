@@ -105,6 +105,14 @@ if config["seq_library"][0] == "single":
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
         ),
     )
+    done_read_json = (
+        expand(
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_read-files.json',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+    )
 
 if config["seq_library"][0] == "double":
     done_art_p1 = (
@@ -143,7 +151,14 @@ if config["seq_library"][0] == "double":
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
         ),
     )
-
+    done_read_json = (
+        expand(
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_read-files.json',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
+    )
 
 rule all:
     input:
