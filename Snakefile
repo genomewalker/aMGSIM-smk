@@ -215,6 +215,12 @@ rule all:
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
         ),
+        done_prots=expand(
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_prot.done',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
 
 
 """
@@ -226,3 +232,4 @@ include: "rules/create-config-files.smk"
 include: "rules/estimate.smk"
 include: "rules/ancient-genomes.smk"
 include: "rules/ancient-reads.smk"
+include: "rules/ancient-proteins.smk"

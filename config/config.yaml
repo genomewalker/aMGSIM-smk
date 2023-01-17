@@ -22,7 +22,7 @@ fb_config_file: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/confi
 ag_config_file: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/config/ag-config.yml"
 ar_config_file: "/vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/config/ar-config.yml"
 cpus: 16
-
+procs: 3
 # aMGSIM config files
 # fb_config
 genome_paths: /vol/cloud/geogenetics/metaDMG-sims/synthetic-data/assets/genome-paths-list.tsv
