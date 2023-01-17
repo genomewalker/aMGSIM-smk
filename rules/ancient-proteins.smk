@@ -11,7 +11,7 @@ rule ancient_proteins:
         wdir=f'{config["wdir"]}',
         cpus=config["cpus"],
         procs=config["procs"]
-    threads: {threads}
+    threads: config["prot_threads"]
     log:
         f'{config["rdir"]}/logs/config/{{smp}}/{{seqlib}}/{{num_reads}}/ancient-proteins.log',
     benchmark:
