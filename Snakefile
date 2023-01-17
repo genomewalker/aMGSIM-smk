@@ -107,7 +107,7 @@ if config["seq_library"][0] == "single":
     )
     done_read_json = (
         expand(
-            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{smp}.communities_read-files.json',
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities_read-files.json',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
