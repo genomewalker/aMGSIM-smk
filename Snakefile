@@ -83,7 +83,7 @@ done_deamsim = []
 if config["seq_library"][0] == "single":
     done_art_sr = (
         expand(
-            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_art.fq.gz',
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}/{{smp}}_art.fq.gz',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
@@ -91,7 +91,7 @@ if config["seq_library"][0] == "single":
     )
     done_fragsim = (
         expand(
-            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_fragSim.fa.gz',
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}/{{smp}}_fragSim.fa.gz',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
@@ -99,7 +99,7 @@ if config["seq_library"][0] == "single":
     )
     done_deamsim = (
         expand(
-            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_deamSim.fa.gz',
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}/{{smp}}_deamSim.fa.gz',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
@@ -107,7 +107,7 @@ if config["seq_library"][0] == "single":
     )
     done_read_json = (
         expand(
-            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}.communities_read-files.json',
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/{{smp}}/{{smp}}.communities_read-files.json',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
@@ -118,7 +118,7 @@ if config["seq_library"][0] == "double":
     done_art_p1 = (
         (
             expand(
-                f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_art.1.fq.gz',
+                f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}/{{smp}}_art.1.fq.gz',
                 smp=sample_label_read,
                 seqlib=config["seq_library"],
                 num_reads=[str(int(float(i))) for i in config["num_reads"]],
@@ -128,7 +128,7 @@ if config["seq_library"][0] == "double":
     done_art_p2 = (
         (
             expand(
-                f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_art.2.fq.gz',
+                f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}/{{smp}}_art.2.fq.gz',
                 smp=sample_label_read,
                 seqlib=config["seq_library"],
                 num_reads=[str(int(float(i))) for i in config["num_reads"]],
@@ -137,7 +137,7 @@ if config["seq_library"][0] == "double":
     )
     done_fragsim = (
         expand(
-            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_fragSim.fa.gz',
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}/{{smp}}_fragSim.fa.gz',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
@@ -145,7 +145,7 @@ if config["seq_library"][0] == "double":
     )
     done_deamsim = (
         expand(
-            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_deamSim.fa.gz',
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}/{{smp}}_deamSim.fa.gz',
             smp=sample_label_read,
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],

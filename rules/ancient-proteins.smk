@@ -23,7 +23,7 @@ rule ancient_proteins:
     shell:
         """
         cd {params.results_dir} || {{ echo "Cannot change dir"; exit 1; }}
-        aMGSIM protein-analysis --cpus {params.cpus} --procs {params.procs} {input.read_files}
+        aMGSIM protein-analysis --threads {params.cpus} --processes {params.procs} {input.read_files}
         touch {output.prot_tsv}
         cd {params.wdir} || {{ echo "Cannot change dir"; exit 1; }}
         """
