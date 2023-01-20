@@ -9,8 +9,8 @@ rule ancient_proteins:
         output_dir=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}',
         ar_tmp_dir=f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/ar-tmp',
         wdir=f'{config["wdir"]}',
-        cpus=config["cpus"],
-        procs=config["procs"]
+        threads=config["pa_threads"],
+        procs=config["pa_procs"]
     threads: config["prot_threads"]
     log:
         f'{config["rdir"]}/logs/config/{{smp}}/{{seqlib}}/{{num_reads}}/ancient-proteins.log',
@@ -23,7 +23,7 @@ rule ancient_proteins:
     shell:
         """
         cd {params.results_dir} || {{ echo "Cannot change dir"; exit 1; }}
-        aMGSIM protein-analysis --threads {params.cpus} --processes {params.procs} {input.read_files}
+        aMGSIM protein-analysis --threads {params.threads} --processes {params.procs} {input.read_files}
         touch {output.prot_tsv}
         cd {params.wdir} || {{ echo "Cannot change dir"; exit 1; }}
         """
