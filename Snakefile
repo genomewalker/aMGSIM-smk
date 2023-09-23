@@ -80,6 +80,7 @@ done_art_p1 = []
 done_art_p2 = []
 done_fragsim = []
 done_deamsim = []
+done_prots = []
 if config["seq_library"][0] == "single":
     done_art_sr = (
         expand(
@@ -159,6 +160,18 @@ if config["seq_library"][0] == "double":
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
         ),
     )
+    do_proteins = config.get("do_proteins", False)
+    # check do_proteins is a boolean
+    if not isinstance(do_proteins, bool):
+        raise ValueError("do_proteins must be a boolean")
+        exit(1)
+    if do_proteins:
+        done_prots=expand(
+            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_prot.done',
+            smp=sample_label_read,
+            seqlib=config["seq_library"],
+            num_reads=[str(int(float(i))) for i in config["num_reads"]],
+        ),
 
 rule all:
     input:
@@ -215,12 +228,7 @@ rule all:
             seqlib=config["seq_library"],
             num_reads=[str(int(float(i))) for i in config["num_reads"]],
         ),
-        done_prots=expand(
-            f'{config["rdir"]}/{{smp}}/{{seqlib}}/{{num_reads}}/reads/{{smp}}_prot.done',
-            smp=sample_label_read,
-            seqlib=config["seq_library"],
-            num_reads=[str(int(float(i))) for i in config["num_reads"]],
-        ),
+
 
 
 """

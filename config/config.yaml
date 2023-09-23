@@ -65,3 +65,5 @@ seq_system: "HS25"
 # Read length
 seq_read_length: 125
 remove_adapters: True
+
+do_proteins: False
